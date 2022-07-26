@@ -29,10 +29,8 @@ def graph_entropy(adjacency_matrix):
 
     # Compute normalized graph fisher information (Equation 5 and Equation 6 from the reference article)
     for k in range(nodes):
-        for l in range(nodes-1):
-            if k != l :
-                temp[0, l] = ((sqrt(random_walk_mat[k, l+1]) - sqrt(random_walk_mat[k, l])) ** 2)
-            node_information[0, k] = (0.5 * (np.sum(temp[0,], axis=0)))
+        list_values = list(map((lambda l: ((sqrt(random_walk_mat[k, l+1]) - sqrt(random_walk_mat[k, l])) ** 2) if k != l else 0), range(nodes-1)))
+        node_information[0, k] = (0.5 * (sum(list_values)))
 
     normalized_graph_fisher_information = np.sum(node_information[0,], axis=0)/nodes
 
