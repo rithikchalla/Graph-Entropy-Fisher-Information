@@ -15,7 +15,7 @@ def graph_entropy(adjacency_matrix):
     
     # This will return the number of nodes in the graph
     nodes = adjacency_matrix.shape[0]
-
+    
     # Computes graph entropy from (Equation 4 from reference article)
     normalized_graph_entropy = (1/(nodes * np.log(nodes-1))) * (sum(np.log(np.sum(adjacency_matrix, axis=0))))
 
